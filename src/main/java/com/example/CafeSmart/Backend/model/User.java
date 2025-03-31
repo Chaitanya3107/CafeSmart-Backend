@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @Entity
 @Getter
@@ -24,5 +23,11 @@ public class User {
     private String password;
     @Column(nullable = false)
     private String role;
-
+    // Set default role before persisting to the database
+    @PrePersist
+    public void setDefaultRole() {
+        if (this.role == null) {
+            this.role = "USERS";
+        }
+    }
 }

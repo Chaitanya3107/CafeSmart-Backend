@@ -5,6 +5,7 @@ import com.example.CafeSmart.Backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -15,16 +16,14 @@ public class OrderController {
 
     @PostMapping("/place")
     public CustomerOrder placeOrder(@RequestBody CustomerOrder customerOrder){
-
         return orderService.placeOrder(customerOrder);
-
     }
 
-    @GetMapping("{id}")
-    public Optional<CustomerOrder> getOrder(@PathVariable long id){
-
-        return orderService.getOrder(id);
-
+    @GetMapping("/myOrders")
+    public List<CustomerOrder> getUserOrders() {
+        return orderService.getUserOrders();
     }
+
+
 
 }

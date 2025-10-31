@@ -126,4 +126,60 @@ CREATE TABLE orders (
     FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
 );
 ```
+
+## 🧩 Flow Diagram
+```mermaid
+   graph LR
+    A[Client Flutter App]
+    B[API Gateway / Spring Security]
+    C[Auth Controller]
+    D[Auth Service]
+    E[(MySQL Database)]
+    F[Menu Controller]
+    G[Menu Service]
+    H[Order Controller]
+    I[Order Service]
+    J[Admin Controller]
+    K[Admin Service]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+
+    B --> F
+    F --> G
+    G --> E
+
+    B --> H
+    H --> I
+    I --> E
+
+    B --> J
+    J --> K
+    K --> E
+
+    subgraph Client
+        A
+    end
+
+    subgraph Backend
+        B
+        C
+        D
+        F
+        G
+        H
+        I
+        J
+        K
+    end
+
+    subgraph Database
+        E
+    end
+
+
+```
+
 🚀 CaféSmart – Making Cafeteria Management Smarter & Faster! ☕

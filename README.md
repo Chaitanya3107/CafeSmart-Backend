@@ -127,7 +127,7 @@ CREATE TABLE orders (
 );
 ```
 
-## 🧩 Flow Diagram
+## 🧩 API Flow Diagram
 ```mermaid
    graph LR
     A[Client Flutter App]
